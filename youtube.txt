@@ -1,1 +1,0 @@
-[{"name": "python -u \"c:\\Users\\Admin\\Desktop\\Python\\PROJECT 1\\youtube_manager.py\"", "time": "python -u \"c:\\Users\\Admin\\Desktop\\Python\\PROJECT 1\\youtube_manager.py\""}]
