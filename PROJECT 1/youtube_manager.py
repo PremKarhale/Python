@@ -36,7 +36,7 @@ def add_video(videos):
 def update_videos(videos):
     list_all_videos(videos)
     userInput =int(input("Enter the video no you want to update :"))
-    if 1<= userInput < len(videos):
+    if 1<= userInput <= len(videos):
         name=input("enter the name of the video you want to update")
         time=input("enter the duration of the video you want to update ")
         videos[userInput-1]={"name":name , "time":time}
@@ -51,7 +51,7 @@ def update_videos(videos):
 def delete_videos(videos):
     list_all_videos(videos)
     userInput =int(input("Enter the video no you want to delete :"))
-    if 1<=userInput <len(videos):
+    if 1<=userInput <=len(videos):
         del(videos[userInput-1]) 
         save_data_helper(videos)
         print("\n")
