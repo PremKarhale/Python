@@ -96,12 +96,11 @@ def main():
                     delete_videos(videos) 
                 case "5":
                     print("Are you sure you want to delete all the videos")
-                    ans =input("yes/no")
+                    ans =input("yes/no :".lower().strip())
                     if ans == "yes" :
                         delete_all_videos(videos)
                     else:
-                        print("ok Here is the list")
-                        list_all_videos(videos)           
+                        print("ok back to the main menu".upper())                                  
                 case "6":
                     print("Goodbye!")
                     break 
