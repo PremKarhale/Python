@@ -3,30 +3,33 @@ openFile="youtube.txt"
 
 def load_data():
     try:
-        with open(openFile,"r") as file:   #all the videos that loads are in teh form of a strings 
-            data= json.load(file)
+        with open(openFile,"r") as file: #all the videos that loads in the file are in the form of strings !! 
+            data = json.load(file) #it converts them into the dictionary and store them in a data
             # print("data type of the loaded data is :",type(data))
             return data
     except FileNotFoundError:
         return []
     
-    #json.dump takes two para kya dump karna hai or kisme dump karna hai 
+    #json.dump takes two parameter kya dump karna hai or kisme dump karna hai 
 def save_data_helper(videos):
     with open(openFile , "w") as file:
         return json.dump(videos , file)   
 
 def list_all_videos(videos):
-    print("\n")
-    print("*"*40)
-    for index , video in  enumerate(videos , start=1):
-        print(f"{index}  {video['name']}- Duration: {video['time']}")
-    print("\n")
-    print("*"*40)
+    if videos:
+        print("\n")
+        print("*"*40)
+        for index , video in  enumerate(videos , start=1):
+            print(f"{index}  {video['name']}- Duration: {video['time']}")
+        print("\n")
+        print("*"*40)
+    else:
+        print("you dont have any videos to show here ! go.. add some videos first!!".upper())
 
 def add_video(videos):
-    name=input("enter the name of the video :")
+    name=input("Enter the name of the video :")
     time=input("length of the video :")
-    videos.append({"name":name , "time":time})#jo jo videos mene add kiya usko append kar do videos me 
+    videos.append({"name":name.upper() , "time":time})#jo jo videos mene add kiya usko append kar do videos me 
     save_data_helper(videos) # it save my added videos in the loader file(youtube.txt)
     print("\n")
     print(f"VIDEO IS SUCESSFULLY ADDED")  
@@ -58,10 +61,16 @@ def delete_videos(videos):
         print(f"VIDEO NO {userInput} IS SUCESSFULLY DELEATED")  
     else:
         print("enter the correct no of the videos ")
- 
+
+def delete_all_videos(videos):
+    videos.clear() # this empties the list
+    save_data_helper(videos) #updated the loader file
+    print("\n")
+    print("You have sucessfully deleted all the youtube videos".upper())
+
 def main():
     videos =load_data() # all the data into the files is now stored in the videos 
-
+    print("videos:",videos)
     # print(f"loaded videos :{videos}")
 
     while True:  # ← Loop is NOW inside main()
@@ -71,7 +80,8 @@ def main():
             print("2. Add a youtube videos")
             print("3. Update a youtube video details")
             print("4. Delete youtube video")
-            print("5. Exit the App")
+            print("5. Delete all the videos")
+            print("6. Exit the App")
             
             choice = input("Enter your choice: ")
             
@@ -83,8 +93,16 @@ def main():
                 case "3":
                     update_videos(videos)
                 case "4":
-                    delete_videos(videos)    
+                    delete_videos(videos) 
                 case "5":
+                    print("Are you sure you want to delete all the videos")
+                    ans =input("yes/no")
+                    if ans == "yes" :
+                        delete_all_videos(videos)
+                    else:
+                        print("ok Here is the list")
+                        list_all_videos(videos)           
+                case "6":
                     print("Goodbye!")
                     break 
                 case _:
