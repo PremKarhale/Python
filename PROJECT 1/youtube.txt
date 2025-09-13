@@ -1,1 +1,1 @@
-[{"name": "chai or code ", "time": "45min"}, {"name": "japan speking tutorials", "time": "50 min"}, {"name": "HITESH CHOUDARY \"PYTHON \"", "time": "45 MIN "}, {"name": "Fitness by saket", "time": "45min"}]
+[{"name": "chai aur code ", "time": "45 min"}, {"name": "pyhton course by hitesh choudary ", "time": "2 hrs"}, {"name": "DATA SCIENCE COURSE CODE WITH HARRY", "time": "4 hrs"}]
